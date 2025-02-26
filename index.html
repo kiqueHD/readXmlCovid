@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tendencia de Casos COVID-19 en Andorra</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
 
+<body>
+    <!---
+        errores que se van dando
+        1 usar librerias? xlst? jquery? como acceder: por nodos (w3 schools xml dom)
+        2 The main issue here is that you're trying to load the xmlCovid.xml file from the local filesystem, 
+        which is blocked by the browser's security policies. To fix this, run a local web server (e.g., using http-server or live-server), 
+        and access your page through http://127.0.0.1:8080 (or another local address).
+        Let me know if you need any more help with this!
+        3
+
+
+
+        
+        
+        -->
     <canvas id="covidChart"></canvas>
 
     <script>
@@ -15,11 +30,11 @@
             try {
                 const response = await fetch("xmlCovid.xml");
                 const text = await response.text();
-
+                console.log("Se ha cargado");
                 // Parsear el XML
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(text, "text/xml");
-
+                console.log("Parseado");
                 // Extraer registros y filtrar solo Andorra
                 let casesByDate = [];
                 const records = xmlDoc.getElementsByTagName("record");
@@ -72,4 +87,5 @@
     </script>
 
 </body>
+
 </html>
