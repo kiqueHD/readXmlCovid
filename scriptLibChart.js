@@ -4,6 +4,9 @@
 async function loadXML() {
     try {
         const response = await fetch("xmlCovid.xml");
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
         const text = await response.text();
         console.log("Se ha cargado");
         // Parsear el XML
