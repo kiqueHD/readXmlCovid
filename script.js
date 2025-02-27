@@ -20,6 +20,7 @@ async function loadXML() {
             }
         }
 
+        
        
     } catch (error) {
         console.error("Error cargando el archivo XML:", error);
